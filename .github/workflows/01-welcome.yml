@@ -1,6 +1,6 @@
 name: Welcome Team Member
 
-run-name: 새 팀원 환영 - 실행자: ${{ github.actor }}
+run-name: "새 팀원 환영 - 실행자: ${{ github.actor }}"
 
 on:
   workflow_dispatch:
