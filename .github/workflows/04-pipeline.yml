@@ -15,7 +15,7 @@ jobs:
       - name: 린트 실행
         run: echo "린트 통과"
 
-  unit-test:
+  unit_test:
     needs: lint
     runs-on: ubuntu-latest
 
@@ -47,7 +47,7 @@ jobs:
 
   deploy:
     needs:
-      - unit-test
+      - unit_test
       - build
 
     if: github.ref == 'refs/heads/main'
@@ -57,14 +57,14 @@ jobs:
     steps:
       - name: 배포 실행
         run: |
-          echo "테스트 통과 수: ${{ needs.unit-test.outputs.passed_count }}"
+          echo "테스트 통과 수: ${{ needs.unit_test.outputs.passed_count }}"
           echo "배포 아티팩트: ${{ needs.build.outputs.artifact_name }}"
           echo "배포 환경: production"
 
   notify:
     needs:
       - lint
-      - unit-test
+      - unit_test
       - build
       - deploy
 
@@ -77,6 +77,6 @@ jobs:
         run: |
           echo "=== 파이프라인 결과 ==="
           echo "lint: ${{ needs.lint.result }}"
-          echo "unit-test: ${{ needs.unit-test.result }}"
+          echo "unit_test: ${{ needs.unit_test.result }}"
           echo "build: ${{ needs.build.result }}"
           echo "deploy: ${{ needs.deploy.result }}"
