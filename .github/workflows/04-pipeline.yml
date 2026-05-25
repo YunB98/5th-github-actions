@@ -35,11 +35,11 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      artifact_name: ${{ steps.set-name.outputs.value }}
+      artifact_name: ${{ steps.set_name.outputs.value }}
 
     steps:
       - name: 아티팩트 이름 설정
-        id: set-name
+        id: set_name
         run: echo "value=myapp-${{ github.run_number }}.jar" >> $GITHUB_OUTPUT
 
       - name: 빌드 실행
